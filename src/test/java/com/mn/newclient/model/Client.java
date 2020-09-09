@@ -1,30 +1,36 @@
 package com.mn.newclient.model;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.Objects;
 
-@Entity
-@Table(name = "client")
+@Document(collection = "clients")
 public class Client implements Serializable {
 
 	private static final long serialVersionUID = -4042023941980758267L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
 	private int id;
 
-	@Column(name="name")
 	private String name;
 
-	@Column(name="cpf")
+	@Indexed(unique = true)
 	private String cpf;
 
-	@Column(name="address")
 	private String address;
+
+	public Client() {
+
+	}
+
+	public Client(String name, String cpf, String address) {
+		this.name		= name;
+		this.cpf 		= cpf;
+		this.address	= address;
+	}
 
 	public int getId() {
 		return id;
@@ -72,5 +78,9 @@ public class Client implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+
+	public String toString() {
+		return "Cliente [id=" + id + ", nome=" + name + ", cpf=" + cpf + ", endereço=" + address + "]";
 	}
 }

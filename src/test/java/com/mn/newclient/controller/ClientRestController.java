@@ -1,8 +1,10 @@
 package com.mn.newclient.controller;
 
 import com.mn.newclient.model.Client;
+import com.mn.newclient.repository.ClientRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,28 +18,24 @@ import java.util.List;
 @Api(value = "Cadastro de clientes", description = "Estudo springboot ")
 public class ClientRestController {
 
+	@Autowired
+	ClientRepository clientRepository;
 
 	@ApiOperation(value = "Cadastro de novos clientes")
 	@PostMapping("/newClient")
-	public ResponseEntity<String> simian(@RequestBody Client client) {
+	public ResponseEntity<String> newClient(@RequestBody Client client) {
 
 		try {
-			// Validação docpf
+			// Validação do cpf
 			this.isValidCpf(client.getCpf());
 
-			//Service.save(client);
+			clientRepository.save(client);
 
 		}catch (Exception e){
-			return new ResponseEntity<>("HTTP 403-FORBIDDEN", HttpStatus.FORBIDDEN);
+			return new ResponseEntity<>("HTTP 500", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		/*
-		if(  )
-			return new ResponseEntity<>("HTTP 200-OK", HttpStatus.OK);
-		else
-			return new ResponseEntity<>("HTTP 403-FORBIDDEN", HttpStatus.FORBIDDEN);
-
-		 */
+		return new ResponseEntity<>("HTTP 201-CREATED", HttpStatus.CREATED);
 	}
 
 	// Validação do cpf do cliente
