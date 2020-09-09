@@ -27,7 +27,7 @@ public class ClientRestController {
 
 		try {
 			// Validação do cpf
-			this.isValidCpf(client.getCpf());
+			//this.isValidCpf(client.getCpf());
 
 			clientRepository.save(client);
 
