@@ -1,19 +1,58 @@
-version: '3.7'
-
+version: '3'
 services:
 
+    mongodb:
+        image: mongo
+        networks:
+            - marilia-network
+        container_name: mongodb
+        restart: always
 
-  ####################################
-  #### Banco de dados NoSQL
-  ####################################
-  mongodb:
-    image: mongo:latest
+    appjava1:
+        build:
+            dockerfile: docker/app.dockerfile
+            context: .
+        # image: marilia/openjdk-8-jdk-alpine
+        container_name: appjava1
+        ports:
+            - "8080"
+        networks:
+            - marilia-network
+        restart: always
+        depends_on:
+            - "mongodb"
 
 
-  ####################################
-  #### Aplicação
-  ####################################
-  application:
-    image: marilia/examplespringboot:latest
-    depends_on:
-      - mongodb
+    appjava2:
+        build:
+            dockerfile: docker/app.dockerfile
+            context: .
+        # image: marilia/openjdk-8-jdk-alpine
+        container_name: appjava2
+        ports:
+            - "8080"
+        networks:
+            - marilia-network
+        restart: always
+        depends_on:
+            - "mongodb"
+
+
+    nginx:
+        build:
+            dockerfile: docker/nginx.dockerfile
+            context: .
+        # image: marilia/nginx
+        container_name: nginx
+        ports:
+            - "80:80"
+        networks:
+            - marilia-network
+        depends_on:
+            - "appjava1"
+            - "appjava2"
+
+
+networks:
+    marilia-network:
+        driver: bridge
