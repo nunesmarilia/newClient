@@ -1,5 +1,19 @@
+version: '3.7'
 
-newclient-mongodb:
-  image: mongo:3.5
-  ports:
-    - "27017:27017"
+services:
+
+
+  ####################################
+  #### Banco de dados NoSQL
+  ####################################
+  mongodb:
+    image: mongo:latest
+
+
+  ####################################
+  #### Aplicação
+  ####################################
+  application:
+    image: marilia/examplespringboot:latest
+    depends_on:
+      - mongodb

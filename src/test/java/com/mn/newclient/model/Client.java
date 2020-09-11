@@ -1,24 +1,15 @@
 package com.mn.newclient.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-@Document(collection = "clients")
-public class Client implements Serializable {
-
-	private static final long serialVersionUID = -4042023941980758267L;
+public class Client {
 
 	@Id
-	private int id;
+	private int cpf;
 
 	private String name;
-
-	@Indexed(unique = true)
-	private String cpf;
 
 	private String address;
 
@@ -26,18 +17,10 @@ public class Client implements Serializable {
 
 	}
 
-	public Client(String name, String cpf, String address) {
+	public Client(String name, int cpf, String address) {
 		this.name		= name;
 		this.cpf 		= cpf;
 		this.address	= address;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -48,11 +31,11 @@ public class Client implements Serializable {
 		this.name = name;
 	}
 
-	public String getCpf() {
+	public int getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(int cpf) {
 		this.cpf = cpf;
 	}
 
@@ -69,18 +52,17 @@ public class Client implements Serializable {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Client client = (Client) o;
-		return id == client.id &&
-				name.equals(client.name) &&
-				cpf.equals(client.cpf) &&
+		return cpf == client.cpf &&
+				Objects.equals(name, client.name) &&
 				Objects.equals(address, client.address);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(cpf, name, address);
 	}
 
 	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + name + ", cpf=" + cpf + ", endereço=" + address + "]";
+		return "Cliente [nome=" + name + ", cpf=" + cpf + ", endereço=" + address + "]";
 	}
 }
