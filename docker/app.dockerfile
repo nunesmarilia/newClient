@@ -1,6 +1,8 @@
 FROM openjdk:8-jdk-alpine
 MAINTAINER Marilia Nunes Alves <nunes.marilia@gmail.com>
 
+RUN apk --no-cache add curl
+
 ENV JAVA_OPTS=""
 
 VOLUME /tmp

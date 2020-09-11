@@ -4,17 +4,17 @@ Projeto para estudo springboot com MongoDB
 
 ## REST API
 
-http://x:9001/ml/swagger-ui.html
+http://x:9001/newclient/swagger-ui.html
 
 ## Serviço do cadastro de clientes
 
-http://x:9001/ml/newClient
+http://x:9001/newclient/save
 
 * Passar Json 
 {
 "name": ["Full Name"],
 "address": [XX],
-"cpf": [999.999.999-99]
+"cpf": [99999999999]
 }
 
 
