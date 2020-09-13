@@ -6,7 +6,7 @@ Projeto para estudo springboot com MongoDB
 
 http://lochost:9001/managerClient/swagger-ui.html
 
-## Serviço do cadastrar de clientes
+## Serviço do cadastrar clientes
 http://localhost/managerClient/save
 
 * Passar Json 

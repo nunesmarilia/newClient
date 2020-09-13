@@ -28,7 +28,7 @@ public class ClientsRestController {
 
         try {
             // Validação do cpf
-            if( Util.isCPF(client.getCpf()) )
+            if( !Util.isCPF(client.getCpf()) )
                 return new ResponseEntity<>("Cpf inválido", HttpStatus.FORBIDDEN);
 
             clientRepository.save(client);
