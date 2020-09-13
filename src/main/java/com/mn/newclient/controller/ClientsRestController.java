@@ -45,7 +45,7 @@ public class ClientsRestController {
     public ResponseEntity<Clients> findClientFilterCPF(@PathVariable String cpf){
         Optional<Clients> client = clientRepository.findById(cpf);
 
-        System.out.println("Entrou no método find");
+        System.out.println("Entrou no método findCpf");
 
         return client.map(cli -> ResponseEntity.ok(cli))
                 .orElse(ResponseEntity.noContent().build());

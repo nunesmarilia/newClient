@@ -2,6 +2,9 @@
 
 Projeto para estudo springboot com MongoDB
 
+### Observações
+Para subir o ambiente corretamente é necessário executar os passos do build maven e depois executar o docker-compose
+
 ## REST API
 
 http://lochost:9001/managerClient/swagger-ui.html
