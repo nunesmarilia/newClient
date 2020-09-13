@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Clients {
     @Id
-    private int cpf;
+    private String cpf;
 
     private String name;
 
@@ -16,7 +16,7 @@ public class Clients {
 
     }
 
-    public Clients(String name, int cpf, String address) {
+    public Clients(String name, String cpf, String address) {
         this.name		= name;
         this.cpf 		= cpf;
         this.address	= address;
@@ -30,11 +30,11 @@ public class Clients {
         this.name = name;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

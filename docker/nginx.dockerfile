@@ -4,7 +4,7 @@ MAINTAINER Marilia Nunes Alves
 RUN mkdir -p /var/www/public
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 RUN chmod 755 -R /var/www/public
-EXPOSE 80
+EXPOSE 80 9001
 ENTRYPOINT ["nginx"]
 # Parametros extras para o entrypoint
 CMD ["-g", "daemon off;"]

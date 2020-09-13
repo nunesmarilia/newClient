@@ -4,19 +4,23 @@ Projeto para estudo springboot com MongoDB
 
 ## REST API
 
-http://x:9001/newclient/swagger-ui.html
+http://lochost:9001/managerClient/swagger-ui.html
 
-## Serviço do cadastro de clientes
-
-http://x:9001/newclient/save
+## Serviço do cadastrar de clientes
+http://localhost/managerClient/save
 
 * Passar Json 
 {
-"name": ["Full Name"],
-"address": [XX],
-"cpf": [99999999999]
+"name": "Full Name",
+"address": "XX",
+"cpf": "99999999999"
 }
 
+## Serviço de listar de clientes cadastrados
+http://localhost/managerClient/listAll
+
+## Serviço de pesquisar cpf
+http://localhost/managerClient/find/{cpf}
 
 ## Build manual com Testes
 
@@ -25,3 +29,8 @@ http://x:9001/newclient/save
 ## Build manual sem Testes
 
 `mvn install -Dmaven.test.skip=true`
+
+## Subindo ambiente Docker
+```bash
+docker-compose up --build -d
+```

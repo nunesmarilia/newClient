@@ -2,17 +2,18 @@ package com.mn.newclient;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.nio.file.Path;
 
 @EnableSwagger2
 @Configuration
-public class SwaggerConfig extends WebMvcConfigurationSupport {
+public class SwaggerConfig  {
 
 	/**
 	 * @return
@@ -24,15 +25,16 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 		docket
 		.select()
 		.apis(RequestHandlerSelectors.basePackage("com.mn.newclient"))
-		.paths(PathSelectors.any())
 		.build()
 		.apiInfo(this.infoApi().build());
+
+		//.paths(PathSelectors.any())
 
 		return docket;
 	}
 	
 	private ApiInfoBuilder infoApi() {
-		ApiInfoBuilder appInfo  = new ApiInfoBuilder().title("");
+		ApiInfoBuilder appInfo  = new ApiInfoBuilder().title("Springboot + MongoDB");
 		appInfo.description(" ");
 		appInfo.version("1.0.0");
 

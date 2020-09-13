@@ -16,6 +16,7 @@ services:
         container_name: appjava1
         ports:
             - "8080"
+            - "9001"
         networks:
             - marilia-network
         restart: always
@@ -31,6 +32,7 @@ services:
         container_name: appjava2
         ports:
             - "8080"
+            - "9001"
         networks:
             - marilia-network
         restart: always
