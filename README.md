@@ -37,3 +37,29 @@ http://localhost/managerClient/find/{cpf}
 ```bash
 docker-compose up --build -d
 ```
+
+## Subindo ambiente Docker pra nuvem
+```bash
+#!/bin/bash
+
+# Description: Baixa projeto e inicia o docker
+# Author: Marilia Nunes Alves
+
+WORK_DIR=/opt/application
+[ ! -d "${WORK_DIR}" ] && sudo mkdir ${WORK_DIR} && sudo chown $(whoami): ${WORK_DIR}
+
+cd ${WORK_DIR}
+
+if [ ! -d "${WORK_DIR}/newclient" ]; then
+	git clone https://github.com/nunesmarilia/newclient.git
+	cd newclient
+else
+	cd ${WORK_DIR}/newclient
+	git pull
+fi
+
+mvn clean install
+
+cd target
+docker-compose up --build -d
+```
