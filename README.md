@@ -7,7 +7,7 @@ Para subir o ambiente corretamente é necessário executar os passos do build ma
 
 ## REST API
 
-http://lochost:9001/managerClient/swagger-ui.html
+http://lochost/managerClient/swagger-ui.html
 
 ## Serviço do cadastrar clientes
 http://localhost/managerClient/save
